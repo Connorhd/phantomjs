@@ -1,0 +1,14 @@
+language: cpp
+
+script:
+  - ./build.py -c -j 2
+  - ./test/run-tests.py
+
+addons:
+  apt:
+    packages:
+      - gperf
+
+os:
+  - linux
+  - osx

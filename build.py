@@ -131,7 +131,16 @@ class PhantomJSBuilder(object):
         print("Executing in %s: %s" % (workingDirectory, " ".join(command)))
         if self.options.dry_run:
             return 0
-        process = subprocess.Popen(command, stdout=sys.stdout, stderr=sys.stderr, cwd=workingDirectory)
+        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=sys.stderr, cwd=workingDirectory)
+        while True:
+            line = process.stdout.readline()
+            if line != '':
+                # Show a single . per line of stdout
+                sys.stdout.write('.')
+                sys.stdout.flush()
+            else:
+                print ''
+                break
         process.wait()
         return process.returncode
 
