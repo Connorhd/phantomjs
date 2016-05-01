@@ -1,0 +1,7 @@
+language: cpp
+
+script: ./build.py -c
+
+os:
+  - linux
+  - osx
