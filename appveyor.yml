@@ -6,8 +6,6 @@ build_script:
 - cmd: >-
     SET PATH=%CD%\src\qt\3rdparty\gnuwin32\bin;%PATH%
 
-    SET LIB=%CD%\src\qt\3rdparty\libicu\lib;%LIB%
-
-    python build.py -c
+    python build.py -c --condense-output
 test_script:
 - cmd: python test\run-tests.py
